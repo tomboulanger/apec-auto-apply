@@ -16,8 +16,10 @@ Le script s’appuie sur **[Playwright](https://playwright.dev/)** pour automati
 ### 🔁 Étapes principales :
 1. 🔐 Connexion automatique à l’APEC via Playwright.  
 2. 🍪 Récupération des cookies et jetons d’authentification.  
-3. 🧠 Utilisation des **routes API internes** pour soumettre le CV et la lettre de motivation.  
-4. 📨 Envoi automatique des candidatures selon les critères configurés (mots-clés, localisation, etc.).
+3.    Récupération des offres avec un filtre spécifiques (voir fetchAllOffres ligne 65)
+4. 🧠 Utilisation des **routes API internes** pour soumettre le CV et la lettre de motivation.  
+5. 📨 Envoi automatique des candidatures selon les critères configurés (mots-clés, localisation, etc.).
+6.    Sauvegarde des offres candidatées dans un fichier postulats.json
 
 ---
 
@@ -56,7 +58,7 @@ dans le **respect des conditions d’utilisation** et **des lois en vigueur**.
 
 ---
 
-## 🛠️ Installation
+## 🛠️ Installation & Utilisation 
 
 ```bash
-yarn install
+yarn install && yarn start
