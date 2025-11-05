@@ -1,1 +1,4 @@
 .env
+postulats.json
+yarn.lock
+node_modules

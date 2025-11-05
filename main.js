@@ -91,7 +91,6 @@ async function fetchAllOffres(cookieHeader) {
       salaireMaximum: "200",
     };
 
-    console.log(`[${getTimestamp()}] Fetching offres: startIndex ${startIndex}`);
     const response = await fetch(APEC_SEARCH_URL, {
       method: "POST",
       headers,
@@ -167,8 +166,9 @@ async function postCandidature(offer, cookieHeader, postulats) {
           postulats.push(offer.id);
           await savePostulats(postulats);
         }
-        console.error(`\x1b[31m[${getTimestamp()}] ❌ [400] Mauvaise requête : ${offer.intitule} chez ${offer.nomCommercial} [${offer.id}]\x1b[0m`);
-        console.error(`[${getTimestamp()}] Response body:`, responseBody);
+        console.error(
+          `\x1b[31m[${getTimestamp()}] ❌ [400] Mauvaise requête : ${offer.intitule} chez ${offer.nomCommercial} [${offer.id}] ${responseBody.idOffre}\x1b[0m`
+        );
         return;
       } else if (response.status === 401) {
         throw new Error(`[401] Non autorisé : vérifie tes cookies/session. Response: ${JSON.stringify(responseBody)}`);
@@ -187,7 +187,6 @@ async function postCandidature(offer, cookieHeader, postulats) {
     }
 
     console.log(`\x1b[32m[${getTimestamp()}] ✅ Candidature envoyée : ${offer.nomCommercial} | ${offer.intitule} | ${offer.salaireTexte || "N/A"}\x1b[0m`);
-    console.log(`[${getTimestamp()}] Response body:`, responseBody);
   } catch (e) {
     console.error(`\x1b[31m[${getTimestamp()}] ❌ Erreur lors de la candidature : ${e.message}\x1b[0m`);
   }
@@ -274,8 +273,6 @@ async function postCandidature(offer, cookieHeader, postulats) {
       if (!postulats.includes(offer.id)) {
         await postCandidature(offer, cookieHeader, postulats);
         await new Promise((r) => setTimeout(r, 10000));
-      } else {
-        console.log(`[${getTimestamp()}] Offre déjà postulée: ${offer.id} - ${offer.intitule}`);
       }
     }
 
