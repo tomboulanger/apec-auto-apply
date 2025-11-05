@@ -1,4 +1,3 @@
-<img width="1505" height="460" alt="image" src="https://github.com/user-attachments/assets/d9b89ac8-e46b-4c73-8e15-7588132e5905" />
 <img width="1505" height="406" alt="image" src="https://github.com/user-attachments/assets/59247e34-c945-445a-ac5a-d84d90711aa3" />
 
 # 🚀 Auto Apply APEC — Script d’automatisation d’envoi de candidatures
